@@ -13,14 +13,6 @@ import java.util.Calendar;
  *
  * @author mike
  *
- * @param prefixMessage default debug message prefix [default: prefixMessage =
- * "DEBUG> "]
- * @param inWhat name of place from which debug is executed
- * @param on parametr which decides if class writtes messages [default: on =
- * false]
- * @param writeToFile parametr which decides if class writtes messages to
- * additional file[default: writeToFile = false]
- * @param filePath Path to additional log file [default: filePath = "debug.log"]
  */
 public class Debug {
 
@@ -38,7 +30,7 @@ public class Debug {
     }
 
     /**
-     * Constructor
+     * Constructor which class name setter.
      *
      * @param inWhat name of place from which debug is executed
      */
@@ -47,22 +39,11 @@ public class Debug {
     }
 
     /**
-     * Constructor
-     *
-     * @param prefixMessage default debug message prefix
-     *
-     * [default: prefixMessage = "DEBUG> "]
-     * @param inWhat name of place from which debug is executed
-     */
-    public Debug(String prefixMessage, String inWhat) {
-        this.prefixMessage = prefixMessage;
-        this.inWhat = inWhat;
-    }
-
-    /**
      * Getter for prefixMessage
      * <p>
-     * default debug message prefix [default: prefixMessage = "DEBUG> "]
+     * [default: prefixMessage = "DEBUG> "]
+     *
+     * @return default debug message prefix
      */
     public String getPrefixMessage() {
         return prefixMessage;
@@ -70,23 +51,26 @@ public class Debug {
 
     /**
      * Setter for String prefixMessage
+     * <p>
+     * [default: prefixMessage = "DEBUG> "]
      *
      * @param prefixMessage default debug message prefix
-     *
-     * [default: prefixMessage = "DEBUG> "]
      */
     public void setPrefixMessage(String prefixMessage) {
         this.prefixMessage = prefixMessage;
     }
 
     /**
+     * Used to get name of class from which it is called.
      *
+     * @return returns name of class from which it is called.
      */
     public String getInWhat() {
         return inWhat;
     }
 
     /**
+     * Used to set or change name of class from which it is called.
      *
      * @param inWhat name of place from which debug is executed
      */
@@ -95,33 +79,38 @@ public class Debug {
     }
 
     /**
+     * Used to learn if debugging is on.
+     * <p>
+     * [true - ON ]
+     * <p>
+     * [false - OFF]
      *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * @return boolean true if debugging is on.
      */
     public boolean isOn() {
         return on;
     }
 
     /**
+     * Used to turn debugging on or off.
+     * <p>
+     * [default: on = false]
      *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * @param on parameter which decides if class writes messages
      */
     public void setOn(boolean on) {
         this.on = on;
     }
 
     /**
+     * For checking if debug writes messages to additional file (debug.log) is
+     * on or off.
+     * <p>
+     * [true - ON ]
+     * <p>
+     * [false - OFF]
      *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * @return returns true
      */
     public boolean isWriteToFile() {
         return writeToFile;
@@ -129,43 +118,42 @@ public class Debug {
 
     /**
      *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * <p>
+     * [default: writeToFile = false]
+     *
+     * @param writeToFile parameter which decides if class writes messages to
+     * additional file
      */
     public void setWriteToFile(boolean writeToFile) {
         this.writeToFile = writeToFile;
     }
 
     /**
+     * Used for getting path of file where debug writes.
+     * <p>
+     * [default: filePath = "debug.log"]
      *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * @return returns path of file
      */
     public String getFilePath() {
         return filePath;
     }
 
     /**
+     * Used for setting path to file where debug writes.
+     * <p>
+     * [default: filePath = "debug.log"]
      *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * @param filePath Path to additional log file
      */
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 
     /**
-     *
-     * @param url an absolute URL giving the base location of the image
-     * @param name the location of the image, relative to the url argument
-     * @return the image at the specified URL
-     * @see Image
+     * Used for debugging.
+     * 
+     * @param message contents of debug message
      */
     public void log(String message) {
         if (on) {

@@ -22,7 +22,7 @@ import javax.imageio.ImageIO;
 
 /**
  * Utility used for reading and writing files.
- * 
+ *
  * @author mike
  */
 public class FileExplorer {
@@ -48,7 +48,7 @@ public class FileExplorer {
     public void setDebugOn(boolean on) {
         this.debug.setOn(on);
     }
-    
+
     public Boolean getDebugWriteToFile() {
         return debug.isWriteToFile();
     }
@@ -123,7 +123,7 @@ public class FileExplorer {
 
     public LinkedList<String> read(String input) {
         LinkedList<String> tmpLinkedList = new LinkedList<>();
-        
+
         BufferedReader br = null;
         FileReader fr = null;
 
@@ -164,5 +164,9 @@ public class FileExplorer {
         }
         debug.log("read> " + PATH + input + " > READ");
         return tmpLinkedList;
+    }
+
+    public LinkedList<String> ls(String directory) {
+        return null;
     }
 }
