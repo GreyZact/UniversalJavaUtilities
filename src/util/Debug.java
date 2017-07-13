@@ -10,7 +10,15 @@ import java.util.Calendar;
 
 /**
  * Utility used for debugging.
- *
+ *<p>
+ * EXAMPLE:
+ * <br>
+ * Debug debug = new Debug("Name of Class> ");
+ * <br>
+ * debug.setOn(true); // sets debugging ON
+ * <br>
+ * debug.setWriteToFile(true); // sets flag for writing to file(debug.log) ON
+ * 
  * @author mike
  *
  */
