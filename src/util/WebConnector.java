@@ -11,9 +11,17 @@ package util;
  * @author mike
  */
 public class WebConnector {
-    public void get(){
+    public String get(){
+        return null;
     }
     public void post(){
         
+    }
+    public void downloadFile(){
+        
+    }
+    
+    public void downloadImage() {
+
     }
 }

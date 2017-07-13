@@ -6,9 +6,20 @@
 package util;
 
 /**
+ * Utility for executing
  *
  * @author mike
  */
 public class PythonRunner {
+
+    public void exec(String script) {
+        
+    }
+    
+    public void runFromFile(String file) {
+        FileExplorer fileExplorer = new FileExplorer();
+        String script = fileExplorer.openFile(file);
+        exec(script);
+    }
     
 }

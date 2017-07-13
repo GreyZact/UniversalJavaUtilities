@@ -6,9 +6,10 @@
 package util;
 
 /**
+ * Much needed simple regex tool for Java
  *
  * @author mike
  */
 public class Regex {
-    
+
 }

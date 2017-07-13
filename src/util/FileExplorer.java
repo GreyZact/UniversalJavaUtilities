@@ -166,6 +166,50 @@ public class FileExplorer {
         return tmpLinkedList;
     }
 
+    public String openFile(String input) {
+        String tmpString = null;
+        BufferedReader br = null;
+        FileReader fr = null;
+
+        try {
+
+            fr = new FileReader(PATH + input);
+            br = new BufferedReader(fr);
+
+            String sCurrentLine;
+
+            while ((sCurrentLine = br.readLine()) != null) {
+                tmpString += sCurrentLine;
+            }
+
+        } catch (FileNotFoundException ex) {
+            debug.log("openFile> " + PATH + input + " > ERROR");
+            Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            debug.log("openFile> " + PATH + input + " > ERROR");
+            Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            try {
+
+                if (br != null) {
+                    br.close();
+                }
+
+                if (fr != null) {
+                    fr.close();
+                }
+
+            } catch (IOException ex) {
+                debug.log("openFile> " + PATH + input + " > ERROR");
+                Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        debug.log("openFile> " + PATH + input + " > READ");
+        return tmpString;
+    }
+
     public LinkedList<String> ls(String directory) {
         return null;
     }
