@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author mike
  */
-public class NewClass {
+public class ExperimentalClass {
     
     public static void main(String[] args) {
         Debug debug = new Debug("NewClass> ");
