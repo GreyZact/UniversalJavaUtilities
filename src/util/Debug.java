@@ -30,7 +30,7 @@ public class Debug {
     }
 
     /**
-     * Constructor which class name setter.
+     * Constructor with class name setter.
      *
      * @param inWhat name of place from which debug is executed
      */
@@ -152,7 +152,7 @@ public class Debug {
 
     /**
      * Used for debugging.
-     * 
+     *
      * @param message contents of debug message
      */
     public void log(String message) {
