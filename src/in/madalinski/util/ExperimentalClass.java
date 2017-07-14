@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package in.madalinski.util;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,5 +34,9 @@ public class ExperimentalClass {
         List<String> list = fileExplorer.read("debug.log");
         list.forEach(item -> d.log(item));
 
+        new Logg().printWARNING(System.getProperty("os.name"));
+        Long time = new Date().getTime();
+        new Logg().printWARNING(Config.getKey("example"));
+        new Logg().printWARNING("took: " + String.valueOf(new Date().getTime() - time));
     }
 }

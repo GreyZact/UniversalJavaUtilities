@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package in.madalinski.util;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -112,6 +112,8 @@ public class FileExplorer {
         try {
             FileOutputStream fop = new FileOutputStream(PATH + output, true);
             PrintStream ps = new PrintStream(fop);
+
+            //  Add newLine String to new line at the end of file.
             ps.println(newLine);
             ps.close();
             debug.log("push> " + PATH + output + " > WRITEN");
@@ -128,16 +130,15 @@ public class FileExplorer {
         FileReader fr = null;
 
         try {
-
             fr = new FileReader(PATH + input);
             br = new BufferedReader(fr);
 
             String sCurrentLine;
 
+            //  Populate list line by line.
             while ((sCurrentLine = br.readLine()) != null) {
                 tmpLinkedList.add(sCurrentLine);
             }
-
         } catch (FileNotFoundException ex) {
             debug.log("read> " + PATH + input + " > ERROR");
             Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,22 +146,17 @@ public class FileExplorer {
             debug.log("read> " + PATH + input + " > ERROR");
             Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-
             try {
-
                 if (br != null) {
                     br.close();
                 }
-
                 if (fr != null) {
                     fr.close();
                 }
-
             } catch (IOException ex) {
                 debug.log("read> " + PATH + input + " > ERROR");
                 Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
         debug.log("read> " + PATH + input + " > READ");
         return tmpLinkedList;
@@ -172,12 +168,12 @@ public class FileExplorer {
         FileReader fr = null;
 
         try {
-
             fr = new FileReader(PATH + input);
             br = new BufferedReader(fr);
 
             String sCurrentLine;
 
+            //  Add line by line to String.
             while ((sCurrentLine = br.readLine()) != null) {
                 tmpString += sCurrentLine;
             }
@@ -210,7 +206,21 @@ public class FileExplorer {
         return tmpString;
     }
 
+    /**
+     * Used for returning list of all FILES in directory.
+     *
+     * @param inWhat name of place from which debug is executed
+     */
     public LinkedList<String> ls(String directory) {
+        return null;
+    }
+
+    /**
+     * Used for returning list of ONLY all FOLDERS in directory.
+     *
+     * @param inWhat name of place from which debug is executed
+     */
+    public LinkedList<String> lsDirs(String directory) {
         return null;
     }
 }

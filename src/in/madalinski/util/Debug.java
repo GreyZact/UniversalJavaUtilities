@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template inWhat the editor.
  */
-package util;
+package in.madalinski.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
  * Utility used for debugging.
- *<p>
+ * <p>
  * EXAMPLE:
  * <br>
  * Debug debug = new Debug("Name of Class> ");
@@ -18,13 +18,13 @@ import java.util.Calendar;
  * debug.setOn(true); // sets debugging ON
  * <br>
  * debug.setWriteToFile(true); // sets flag for writing to file(debug.log) ON
- * 
+ *
  * @author mike
  *
  */
 public class Debug {
 
-    private String prefixMessage = "DEBUG> ";
+    private String prefixMessage = "DEBUG: ";
     private String inWhat = " > ";
     private boolean on = false;
     private boolean writeToFile = false;
@@ -47,9 +47,22 @@ public class Debug {
     }
 
     /**
+     * Constructor with class setter for name, toggling debugging and writing to
+     * file ON/OFF.
+     *
+     * @param inWhat name of place from which debug is executed
+     * @param isOn parameter which decides if class writes messages
+     * @param writeToFile parameter which decides if class writes messages to
+     * additional file
+     */
+    public Debug(String inWhat, Boolean isOn, Boolean writeToFile) {
+        this.inWhat = inWhat;
+        this.on = isOn;
+        this.writeToFile = writeToFile;
+    }
+
+    /**
      * Getter for prefixMessage
-     * <p>
-     * [default: prefixMessage = "DEBUG> "]
      *
      * @return default debug message prefix
      */
@@ -59,8 +72,6 @@ public class Debug {
 
     /**
      * Setter for String prefixMessage
-     * <p>
-     * [default: prefixMessage = "DEBUG> "]
      *
      * @param prefixMessage default debug message prefix
      */
@@ -100,7 +111,7 @@ public class Debug {
     }
 
     /**
-     * Used to turn debugging on or off.
+     * Used to turn debugging on/off.
      * <p>
      * [default: on = false]
      *
@@ -125,7 +136,7 @@ public class Debug {
     }
 
     /**
-     *
+     * Used to turn writing to file on/off.
      * <p>
      * [default: writeToFile = false]
      *
