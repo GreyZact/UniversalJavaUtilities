@@ -58,7 +58,7 @@ public class Config {
      * @return LinkedList containing names (String) of all Keys
      */
     public static LinkedList<String> getKeyList() {
-        return null;
+        return new LinkedList<>(settingsMap.keySet());
     }
 
     /**
@@ -69,16 +69,6 @@ public class Config {
      */
     public static String getKey(String key) {
         return settingsMap.get(key);
-    }
-
-    /**
-     * Used for changing values contained as String under provided Key.
-     *
-     * @param key Name (String) of Key
-     * @param value New value (String) contained under provided Key (String)
-     */
-    public void updateKey(String key, String value) {
-
     }
 
     /**
@@ -95,24 +85,5 @@ public class Config {
             }
         });
         return tmpMap;
-    }
-    /**
-     * Used for saving HashMap to config.file.
-     */
-    private static void saveHashMapToFile(HashMap<String, String> hashMap) {
-        FileExplorer fileExplorer = new FileExplorer();
-        // Writte Text representation of settings HashMap to file       
-        fileExplorer.write(configFile, transformHashMap2String(settingsMap));
-    }
-
-    /**
-     * !!! Needs Finishing Used for changing HashMap<String, String> to it's
-     * Text representation.
-     *
-     * @param hashMap HashMap<String, String> containing settings
-     * @return Text representation of HashMap
-     */
-    private static String transformHashMap2String(HashMap<String, String> hashMap) {
-        return null;
     }
 }

@@ -267,7 +267,41 @@ public class FileExplorer {
      * directory.
      */
     public LinkedList<String> ls(String directory) {
-        return null;
+        LinkedList<String> tmpList = new LinkedList<>();
+        File folder = new File(PATH + directory);
+        File[] listOfFiles = folder.listFiles();
+
+        for (File item : listOfFiles) {
+            tmpList.add(item.getName());
+        }
+
+//        for (int i = 0; i < listOfFiles.length; i++) {
+//            if (listOfFiles[i].isFile()) {
+//                System.out.println("File " + listOfFiles[i].getName());
+//            } else if (listOfFiles[i].isDirectory()) {
+//                System.out.println("Directory " + listOfFiles[i].getName());
+//            }
+//        }
+        return tmpList;
+    }
+
+    /**
+     * Used for returning list of ONLY all FILES in directory.
+     *
+     * @param directory path to folder
+     * @return LinkedList containing names (String) of files in directory.
+     */
+    public LinkedList<String> lsFiles(String directory) {
+        LinkedList<String> tmpList = new LinkedList<>();
+        File folder = new File(PATH + directory);
+        File[] listOfFiles = folder.listFiles();
+
+        for (File item : listOfFiles) {
+            if (item.isFile()) {
+                tmpList.add(item.getName());
+            }
+        }
+        return tmpList;
     }
 
     /**
@@ -277,6 +311,15 @@ public class FileExplorer {
      * @return LinkedList containing names (String) of folders in directory.
      */
     public LinkedList<String> lsDirs(String directory) {
-        return null;
+        LinkedList<String> tmpList = new LinkedList<>();
+        File folder = new File(PATH + directory);
+        File[] listOfFiles = folder.listFiles();
+
+        for (File item : listOfFiles) {
+            if (item.isDirectory()) {
+                tmpList.add(item.getName());
+            }
+        }
+        return tmpList;
     }
 }

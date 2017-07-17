@@ -6,6 +6,7 @@
 package in.madalinski.util;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -42,5 +43,13 @@ public class ExperimentalClass {
         Logg.printWARNING(Config.getKey("example2"));
         time3 = new Date().getTime();
         Logg.printWARNING("1st took: " + (time2 - time1) + "\n 2nd took: " + (time3 - time2));
+
+        LinkedList<String> dirsList = fileExplorer.lsDirs("");
+        dirsList.forEach(item -> d.log(item));
+        LinkedList<String> fileList = fileExplorer.lsFiles("");
+        fileList.forEach(item -> d.log(item));
+        
+        LinkedList<String> configKeyList = Config.getKeyList();
+        configKeyList.forEach(item -> d.log(item));
     }
 }
