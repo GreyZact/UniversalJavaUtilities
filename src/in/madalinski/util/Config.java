@@ -23,7 +23,7 @@ public class Config {
 
     private static Config instance;
     private static HashMap<String, String> settingsMap;
-    private static final String configFile = "configuration.file";
+    private static final String configFile = "config.file";
     private static Regex regex = new Regex();
 
     /**
@@ -52,18 +52,38 @@ public class Config {
         return instance;
     }
 
+    /**
+     * Used for getting LinkedList containing names of all Keys in config.file
+     *
+     * @return LinkedList containing names (String) of all Keys
+     */
     public static LinkedList<String> getKeyList() {
         return null;
     }
 
+    /**
+     * Used for getting values contained as String under provided Key.
+     *
+     * @param key Name (String) of Key
+     * @return Returns value (String) contained under provided Key (String)
+     */
     public static String getKey(String key) {
         return settingsMap.get(key);
     }
 
+    /**
+     * Used for changing values contained as String under provided Key.
+     *
+     * @param key Name (String) of Key
+     * @param value New value (String) contained under provided Key (String)
+     */
     public void updateKey(String key, String value) {
 
     }
 
+    /**
+     * Used for building HashMap containing value contained under Keys.
+     */
     private static HashMap<String, String> load() {
         HashMap<String, String> tmpMap = new HashMap<>();
         // Read config file
@@ -76,7 +96,9 @@ public class Config {
         });
         return tmpMap;
     }
-
+    /**
+     * Used for saving HashMap to config.file.
+     */
     private static void saveHashMapToFile(HashMap<String, String> hashMap) {
         FileExplorer fileExplorer = new FileExplorer();
         // Writte Text representation of settings HashMap to file       
