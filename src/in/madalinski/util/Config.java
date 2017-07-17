@@ -77,7 +77,7 @@ public class Config {
         return tmpMap;
     }
 
-    private void saveHashMapToFile(HashMap<String, String> hashMap) {
+    private static void saveHashMapToFile(HashMap<String, String> hashMap) {
         FileExplorer fileExplorer = new FileExplorer();
         // Writte Text representation of settings HashMap to file       
         fileExplorer.write(configFile, transformHashMap2String(settingsMap));
@@ -90,7 +90,7 @@ public class Config {
      * @param hashMap HashMap<String, String> containing settings
      * @return Text representation of HashMap
      */
-    private String transformHashMap2String(HashMap<String, String> hashMap) {
+    private static String transformHashMap2String(HashMap<String, String> hashMap) {
         return null;
     }
 }
