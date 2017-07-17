@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
- * Reads and makes available options saved in "configuration.file".
+ * Reads and makes available options saved in "config.file".
  * <p>
  * Keys in configuration files must start from symbols fulfilling conditions
  * "[a-zA-Z]+" ,rest is treated as comments.
@@ -53,7 +53,7 @@ public class Config {
     }
 
     /**
-     * Used for getting LinkedList containing names of all Keys in config.file
+     * Used for getting LinkedList containing names of all Keys of settings in config.file
      *
      * @return LinkedList containing names (String) of all Keys
      */

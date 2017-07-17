@@ -260,7 +260,7 @@ public class FileExplorer {
     }
 
     /**
-     * Used for returning list of all FILES in directory.
+     * Used for returning list of all FILES and FOLDERS in directory.
      *
      * @param directory path to folder
      * @return LinkedList containing names (String) of files and folders in
