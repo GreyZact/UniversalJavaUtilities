@@ -49,7 +49,7 @@ public class FileExplorer {
     /**
      * Setter for changing base file directory path.
      *
-     * @param PATH
+     * @param PATH change base file directory path
      */
     public void setPATH(String PATH) {
         this.PATH = PATH;

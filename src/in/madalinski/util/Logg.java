@@ -42,7 +42,7 @@ public class Logg {
     /**
      * Static 'instance' method
      *
-     * @return
+     * @return instance
      */
     public static Logg getInstance() {
         return instance;

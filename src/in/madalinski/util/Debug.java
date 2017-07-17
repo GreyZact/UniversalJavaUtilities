@@ -13,7 +13,7 @@ import java.util.Calendar;
  * <p>
  * EXAMPLE:
  * <br>
- * Debug debug = new Debug("Name of Class> ");
+ * Debug debug = new Debug("Name of Class: ");
  * <br>
  * debug.setOn(true); // sets debugging ON
  * <br>
@@ -25,7 +25,7 @@ import java.util.Calendar;
 public class Debug {
 
     private String prefixMessage = "DEBUG: ";
-    private String inWhat = " > ";
+    private String inWhat = " : ";
     private boolean on = false;
     private boolean writeToFile = false;
     private String filePath = "debug.log";

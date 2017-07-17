@@ -46,7 +46,7 @@ public class Config {
     /**
      * Static 'instance' method
      *
-     * @return
+     * @return instance
      */
     public static Config getInstance() {
         return instance;
@@ -84,8 +84,8 @@ public class Config {
     }
 
     /**
-     * !!! Needs Finishing 
-     * Used for changing HashMap<String, String> to it's Text representation.
+     * !!! Needs Finishing Used for changing HashMap<String, String> to it's
+     * Text representation.
      *
      * @param hashMap HashMap<String, String> containing settings
      * @return Text representation of HashMap
