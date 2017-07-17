@@ -27,36 +27,61 @@ import javax.imageio.ImageIO;
  */
 public class FileExplorer {
 
-    private final Debug debug = new Debug("FileExplorer> ");
+    private final Debug debug = new Debug("FileExplorer: ");
     private String PATH = System.getProperty("user.dir") + "/../";
 
+    /**
+     * Constructor
+     *
+     */
     public FileExplorer() {
     }
 
+    /**
+     * Getter of base file directory path.
+     *
+     * @return base file directory path
+     */
     public String getPATH() {
         return PATH;
     }
 
+    /**
+     * Setter for changing base file directory path.
+     *
+     * @param PATH
+     */
     public void setPATH(String PATH) {
         this.PATH = PATH;
     }
 
-    public Boolean getDebugOn() {
-        return debug.isOn();
+    /**
+     * Getter for Debug
+     *
+     * @return debug message prefix
+     */
+    public Debug getDebug() {
+        return debug;
     }
 
-    public void setDebugOn(boolean on) {
-        this.debug.setOn(on);
+    /**
+     * Setter for toggling debugging and writing log to file ON/OFF.
+     *
+     * @param isOn parameter which decides if class writes messages
+     * @param writeToFile parameter which decides if class writes messages to
+     * additional file
+     */
+    public void setDebugging(Boolean isOn, Boolean writeToFile) {
+        this.debug.setOn(isOn);
+        this.debug.setWriteToFile(writeToFile);
     }
 
-    public Boolean getDebugWriteToFile() {
-        return debug.isWriteToFile();
-    }
-
-    public void setDebugWriteToFile(boolean on) {
-        this.debug.setWriteToFile(on);
-    }
-
+    /**
+     * Used for writing (String) data to output file.
+     *
+     * @param output output file
+     * @param data String to save in file
+     */
     public void write(String output, String data) {
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -67,10 +92,10 @@ public class FileExplorer {
             bw = new BufferedWriter(fw);
             bw.write(data);
 
-            debug.log("write> " + PATH + output + " > WRITEN");
+            debug.log("write: " + PATH + output + " : WRITEN");
 
         } catch (IOException ex) {
-            debug.log("write> " + PATH + output + " > ERROR");
+            debug.log("write: " + PATH + output + " : ERROR");
             Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
@@ -92,6 +117,14 @@ public class FileExplorer {
         }
     }
 
+    /**
+     * Used for writing binary image contents to output file.
+     * <p>
+     * Warning: output file needs extension (.jpg|.png|.gif|etc.).
+     *
+     * @param output output file
+     * @param rawImage binary image contents to save in file
+     */
     public void writeImage(String output, BufferedImage rawImage) {
         // Get filetype from output parametr
         String[] tmpStringArray = output.split("\\.");
@@ -108,6 +141,13 @@ public class FileExplorer {
         }
     }
 
+    /**
+     * Used for adding new line (String) newLine at the end of output (text)
+     * file.
+     *
+     * @param output output file
+     * @param newLine String to add at the end of file
+     */
     public void push(String output, String newLine) {
         try {
             FileOutputStream fop = new FileOutputStream(PATH + output, true);
@@ -123,6 +163,13 @@ public class FileExplorer {
         }
     }
 
+    /**
+     * Used for reading text files line by line and returning it as LinkedList
+     * (retains order).
+     *
+     * @param input file to open
+     * @return LinkedList containing lines of text file
+     */
     public LinkedList<String> read(String input) {
         LinkedList<String> tmpLinkedList = new LinkedList<>();
 
@@ -162,6 +209,12 @@ public class FileExplorer {
         return tmpLinkedList;
     }
 
+    /**
+     * Used for reading text files as one String.
+     *
+     * @param input file to open
+     * @return Full text file contents as String
+     */
     public String openFile(String input) {
         String tmpString = null;
         BufferedReader br = null;
@@ -209,7 +262,9 @@ public class FileExplorer {
     /**
      * Used for returning list of all FILES in directory.
      *
-     * @param inWhat name of place from which debug is executed
+     * @param directory path to folder
+     * @return LinkedList containing names (String) of files and folders in
+     * directory.
      */
     public LinkedList<String> ls(String directory) {
         return null;
@@ -218,7 +273,8 @@ public class FileExplorer {
     /**
      * Used for returning list of ONLY all FOLDERS in directory.
      *
-     * @param inWhat name of place from which debug is executed
+     * @param directory path to folder
+     * @return LinkedList containing names (String) of folders in directory.
      */
     public LinkedList<String> lsDirs(String directory) {
         return null;

@@ -27,7 +27,7 @@ public class Regex {
         return debug;
     }
 
-    public void setDebuging(Boolean isOn, Boolean writeToFile) {
+    public void setDebugging(Boolean isOn, Boolean writeToFile) {
         this.debug.setOn(isOn);
         this.debug.setWriteToFile(writeToFile);
     }

@@ -17,20 +17,37 @@ import java.util.logging.Logger;
  */
 public class Logg {
 
+    private static Logg instance;
     private final String filePath = "app.log";
     private boolean writeToFile = true;
-    final private FileExplorer fileExplorer;
+    private static FileExplorer fileExplorer;
     private int logLevel = 0;
-
-    public Logg() {
-        this.fileExplorer = new FileExplorer();
+    /**
+     * A private Constructor prevents any other class from instantiating.
+     */
+    private Logg() {
+        // nothing to do this time
     }
 
-    public Logg(boolean writeToFile) {
-        this.fileExplorer = new FileExplorer();
-        this.writeToFile = writeToFile;
+    /**
+     * The Static initializer constructs the instance at class loading time;
+     * this is to simulate a more involved construction process (it it were
+     * really simple, you'd just use an initializer)
+     */
+    static {
+        instance = new Logg();
+        Logg.fileExplorer = new FileExplorer();
     }
 
+    /**
+     * Static 'instance' method
+     *
+     * @return
+     */
+    public static Logg getInstance() {
+        return instance;
+    }
+    
     public boolean isWriteToFile() {
         return writeToFile;
     }
@@ -82,18 +99,14 @@ public class Logg {
     public void print(String message, Level level) {
         // Log only if Level is high enought
         if (logLevel < level.intValue()) {
-//        Log to console
+            //  Log to console
             Logger.getLogger(FileExplorer.class.getName()).log(level, message);
-//        Save to file
+            //  Save to file
             if (writeToFile) {
                 fileExplorer.push(filePath, getTime() + "[" + level.toString() + "] " + message);
             }
         }
     }
-//    public void write(String messasage) {
-//        
-//        Logger.getLogger(FileExplorer.class.getName()).log(Level.SEVERE, null, messasage);
-//    }
 
     private String getTime() {
         return String.valueOf(new SimpleDateFormat("yyyy-MM-dd' T'HH:mm:ss.SSSXXX").format(Calendar.getInstance().getTime())) + " > ";
