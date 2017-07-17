@@ -34,9 +34,14 @@ public class ExperimentalClass {
         List<String> list = fileExplorer.read("debug.log");
         list.forEach(item -> d.log(item));
 
-        new Logg().printWARNING(System.getProperty("os.name"));
-        Long time = new Date().getTime();
-        new Logg().printWARNING(Config.getKey("example"));
-        new Logg().printWARNING("took: " + String.valueOf(new Date().getTime() - time));
+        Logg logg = new Logg();
+        logg.printWARNING(System.getProperty("os.name"));
+        Long time1, time2, time3;
+        time1 = new Date().getTime();
+        logg.printWARNING(Config.getKey("example"));
+        time2 = new Date().getTime();
+        logg.printWARNING(Config.getKey("example2"));
+        time3 = new Date().getTime();
+        new Logg().printWARNING("1st took: " + (time2 - time1) + "\n 2nd took: " + (time3 - time2));
     }
 }

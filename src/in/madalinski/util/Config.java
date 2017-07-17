@@ -11,7 +11,12 @@ import java.util.LinkedList;
 /**
  * Reads and makes available options saved in "configuration.file".
  * <p>
- * You can only have ONE instance of this class for retaining Configuration file integrity. 
+ * Keys in configuration files must start from symbols fulfilling conditions
+ * "[a-zA-Z]+" ,rest is treated as comments.
+ * <p>
+ * You can only have ONE instance of this class for retaining Configuration file
+ * integrity.
+ *
  * @author mike
  */
 public class Config {
@@ -19,6 +24,7 @@ public class Config {
     private static Config instance;
     private static HashMap<String, String> settingsMap;
     private static final String configFile = "configuration.file";
+    private static Regex regex = new Regex();
 
     /**
      * A private Constructor prevents any other class from instantiating.
@@ -39,12 +45,13 @@ public class Config {
 
     /**
      * Static 'instance' method
-     * @return 
+     *
+     * @return
      */
     public static Config getInstance() {
         return instance;
     }
-    
+
     public static LinkedList<String> getKeyList() {
         return null;
     }
@@ -63,7 +70,9 @@ public class Config {
         LinkedList<String> tmpList = new FileExplorer().read(configFile);
         // Convert config file to HashMap
         tmpList.stream().map((item) -> item.split("=")).forEachOrdered((tmpArray) -> {
-            tmpMap.put(tmpArray[0], tmpArray[1]);
+            if (regex.contains(String.valueOf(tmpArray[0].charAt(0)), "[a-zA-Z]+")) {
+                tmpMap.put(tmpArray[0], tmpArray[1]);
+            }
         });
         return tmpMap;
     }
@@ -75,23 +84,13 @@ public class Config {
     }
 
     /**
+     * !!! Needs Finishing 
      * Used for changing HashMap<String, String> to it's Text representation.
      *
      * @param hashMap HashMap<String, String> containing settings
      * @return Text representation of HashMap
      */
     private String transformHashMap2String(HashMap<String, String> hashMap) {
-        return null;
-    }
-
-    /**
-     * Used for changing Text representation of HashMap to
-     * HashMap<String, String>.
-     *
-     * @param string Text representation of HashMap
-     * @return HashMap<String, String> containing settings
-     */
-    private HashMap<String, String> transformString2HashMap(String string) {
         return null;
     }
 }
